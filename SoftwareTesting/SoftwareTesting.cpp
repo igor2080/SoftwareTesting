@@ -1,16 +1,15 @@
-// SoftwareTesting.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <string>
+#include <sstream>
 
 using namespace std;
 
-static void manipulateVector(vector<int>& vec) {
+static void manipulateVector(vector<int>& vec, ostream& output = std::cout) {
 	// Check if the vector is empty
 	if (vec.empty()) {
-		cout << "Vector is empty. Nothing to manipulate." << endl;
+		output << "Vector is empty. Nothing to manipulate." << endl;
 		return;
 	}
 
@@ -27,30 +26,30 @@ static void manipulateVector(vector<int>& vec) {
 	reverse(vec.begin(), vec.end());
 
 	// Print the modified vector
-	cout << "Modified vector: ";
+	output << "Modified vector: ";
 	for (int num : vec) {
-		cout << num << " ";
+		output << num << " ";
 	}
-	cout << endl;
+	output << endl;
 
 	// Calculate the sum of the elements
 	int sum = 0;
 	for (int num : vec) {
 		sum += num;
 	}
-	cout << "Sum of the elements: " << sum << endl;
+	output << "Sum of the elements: " << sum << endl;
 
 	// Find the maximum element
 	int maxElement = *max_element(vec.begin(), vec.end());
-	cout << "Maximum element: " << maxElement << endl;
+	output << "Maximum element: " << maxElement << endl;
 
 	// Find the minimum element
 	int minElement = *min_element(vec.begin(), vec.end());
-	cout << "Minimum element: " << minElement << endl;
+	output << "Minimum element: " << minElement << endl;
 
 	// Calculate the average
 	double average = static_cast<double>(sum) / vec.size();
-	cout << "Average of the elements: " << average << endl;
+	output << "Average of the elements: " << average << endl;
 
 	// Count the number of even and odd numbers
 	int numEven = 0, numOdd = 0;
@@ -62,15 +61,19 @@ static void manipulateVector(vector<int>& vec) {
 			numOdd++;
 		}
 	}
-	cout << "Number of even numbers: " << numEven << endl;
-	cout << "Number of odd numbers: " << numOdd << endl;
+	output << "Number of even numbers: " << numEven << endl;
+	output << "Number of odd numbers: " << numOdd << endl;
 }
 
 
 int main()
 {
 	//example use:
-	vector<int> v;
-	v.push_back(27363627);
-	manipulateVector(v);
+	vector<int> v{ 1, 1, -35544, -846, 8, 8, 43689214, 0, 8, -245667, 0 };
+	//manipulateVector(v);
+	// 
+	//example use to store "console" output as a string
+	stringstream storage;
+	manipulateVector(v, storage);
+	cout << storage.str();
 }
