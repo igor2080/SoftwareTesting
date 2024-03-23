@@ -6,7 +6,7 @@
 
 using namespace std;
 
-static void manipulateVector(vector<int>& vec, ostream& output = std::cout) {
+void manipulateVector(vector<int>& vec, ostream& output = std::cout) {
 	// Check if the vector is empty
 	if (vec.empty()) {
 		output << "Vector is empty. Nothing to manipulate." << endl;

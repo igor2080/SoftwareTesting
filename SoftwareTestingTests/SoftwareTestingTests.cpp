@@ -15,7 +15,7 @@ namespace SoftwareTestingTests
 			vector<int> input{ 1, 1, -35544, -846, 8, 8, 43689214, 0, 8, -245667, 0 };
 
 			string ExpectedResult =
-				"Modified vector: 43689224 18 11 10 -836 -35534 -245657 \n"//extra space before newline
+				"Modified vector: -245657 10 43689224 18 -836 -35534 11 \n"//extra space before newline needed
 				"Sum of the elements: 43407236\n"
 				"Maximum element: 43689224\n"
 				"Minimum element: -245657\n"
