@@ -1,6 +1,11 @@
 #include "pch.h"
 #include "CppUnitTest.h"
 #include "../SoftwareTesting/SoftwareTesting.cpp"
+#include<fstream>
+#include<iostream>
+#include<string>
+#include <algorithm>
+#include <sstream>
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -8,27 +13,44 @@ namespace SoftwareTestingTests
 {
 	TEST_CLASS(SoftwareTestingTests)
 	{
+
 	public:
-
-		TEST_METHOD(T3_1)
+		TEST_METHOD(T5_1)
 		{
-			vector<int> input{ 1, 1, -35544, -846, 8, 8, 43689214, 0, 8, -245667, 0 };
-
-			string ExpectedResult =
-				"Modified vector: -245657 10 43689224 18 -836 -35534 11 \n"//extra space before newline needed
-				"Sum of the elements: 43407236\n"
-				"Maximum element: 43689224\n"
-				"Minimum element: -245657\n"
-				"Average of the elements: 6.20103e+06\n"
-				"Number of even numbers: 5\n"
-				"Number of odd numbers: 2\n";
-
-
-			stringstream ActualResult;
-
-			manipulateVector(input, ActualResult);
-
-			Assert::AreEqual(ExpectedResult, ActualResult.str());
+			int ifs = 0, fors = 0, whiles = 0;
+			string codeFile = "int main()"s +
+				"{" +
+				"	int restart = 1;" +
+				"	while(restart!=0)" +
+				"	{" +
+				"		int a=-1; int b=-1;" +
+				"		string g = \"text\" + 5;" +
+				"		int c=0; if(true) c++;" +
+				"		cout<<\"please enter first dimension of array(greater than 0) : \";" +
+				"		while(a<0)" +
+				"			cin>>a;" +
+				"		cout<<\"please enter second dimension of array(greater than 0) : \";" +
+				"		while(b<0)" +
+				"			cin>>b;" +
+				"		int** matrix = new int* [a];" +
+				"		for (int i = 0; i < a; i++)" +
+				"		{" +
+				"			matrix[i] = new int[b];" +
+				"		}" +
+				"		for (int i = 0; i < a; i++)" +
+				"		{" +
+				"			for (int j = 0; j < b; j++)" +
+				"			{" +
+				"				cout<<\"enter number for location(\"<<(i+1)<<\"), (\"<<(j+1)<<\") : \";" +
+				"				cin >> matrix[i][j];" +
+				"			}" +
+				"		}" +
+				"}";
+			int expectedIfs = 1, expectedFors = 3, expectedWhiles = 3;
+			findCommands(codeFile, ifs, fors, whiles);
+			Assert::AreEqual(expectedIfs, ifs);
+			Assert::AreEqual(expectedFors, fors);
+			Assert::AreEqual(expectedWhiles, whiles);
 
 		}
 	};

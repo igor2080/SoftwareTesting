@@ -172,6 +172,12 @@
       <Project>{69375abf-9f0e-44e6-a0bc-db8abdc50fa4}</Project>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="codefile1.txt" />
+    <Text Include="codefile2.txt" />
+    <Text Include="codefile3.txt" />
+    <Text Include="codefile4.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
